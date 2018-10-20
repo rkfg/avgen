@@ -29,6 +29,7 @@ public class AvatarFrame extends Frame {
 
     public AvatarFrame(String name, Integer size, boolean animate) {
         this.animate = animate;
+        setTitle("Avatar for " + name);
         avatar = new int[size][size];
         setSize(avatar[0].length * qstep, avatar.length * qstep);
         setLocationRelativeTo(null);
