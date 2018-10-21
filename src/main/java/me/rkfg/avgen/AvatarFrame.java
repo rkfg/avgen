@@ -171,15 +171,24 @@ public class AvatarFrame extends Frame {
                     } else {
                         Color curColor = color;
                         for (int i = 1; i < overdraw; ++i) {
-                            curColor = curColor.brighter();
+                            curColor = brighter(curColor);
                         }
                         g.setColor(curColor);
                     }
                     g.fillRect(x * qstep, y * qstep, qstep, qstep);
-                    /*
-                     * g.setColor(Color.WHITE); g.drawString("" + avatar[x][y], x * qstep, y * qstep + qstep);
-                     */ }
+                }
             }
         }
+    }
+
+    private Color brighter(Color color) {
+        int[] rgb = new int[3];
+        rgb[0] = color.getRed();
+        rgb[1] = color.getGreen();
+        rgb[2] = color.getBlue();
+        for (int i = 0; i < rgb.length; ++i) {
+            rgb[i] = Math.min(0xff, rgb[i] + 0x22);
+        }
+        return new Color(rgb[0], rgb[1], rgb[2]);
     }
 }
